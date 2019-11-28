@@ -28,25 +28,25 @@ for e in range(epochs):
         output = sigmoid(np.dot(hidden_output,weights_hidden_output))
 
         ## Backward pass ##
-        # TODO: Calculate the network's prediction error
+        # Calculate the network's prediction error
         error = y - output
 
-        # TODO: Calculate error term for the output unit
+        # Calculate error term for the output unit
         output_error_term = error * output * (1 - output)
 
         ## propagate errors to hidden layer
 
-        # TODO: Calculate the hidden layer's contribution to the error
+        # Calculate the hidden layer's contribution to the error
         hidden_error = np.dot(output_error_term,weights_hidden_output)
 
-        # TODO: Calculate the error term for the hidden layer
+        # Calculate the error term for the hidden layer
         hidden_error_term = hidden_error * hidden_output * (1 - hidden_output)
 
-        # TODO: Update the change in weights
+        # Update the change in weights
         del_w_hidden_output += output_error_term * hidden_output
         del_w_input_hidden += hidden_error_term * x[:,None]
 
-        # TODO: Update weights  (don't forget to division by n_records or number of samples)
+        # Update weights  (don't forget to division by n_records or number of samples)
     weights_input_hidden += learnrate * del_w_input_hidden / n_records
     weights_hidden_output += learnrate * del_w_hidden_output / n_records
 
